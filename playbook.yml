@@ -1,0 +1,46 @@
+---
+- name: OS Management
+  hosts: your_remote_host
+  become: true
+
+  tasks:
+    - name: Create script locally
+      copy:
+        content: |
+          #!/bin/bash
+          df -h
+        dest: /tmp/nice-script.sh
+        mode: 0755
+
+    - name: Create user
+      user:
+        name: john
+        home: /better-place/john
+        uid: 1234
+        createhome: yes
+
+    - name: Copy script to remote machine
+      copy:
+        src: /tmp/nice-script.sh
+        dest: /better-place/john/nice-script.sh
+        mode: 0755
+
+    - name: Allow user to run whoami with sudo
+      lineinfile:
+        path: /etc/sudoers
+        line: 'john ALL=(ALL) NOPASSWD: /usr/bin/whoami'
+
+    - name: Install Tmux and Vim packages
+      package:
+        name:
+          - tmux
+          - vim
+        state: present
+
+    - name: Install Terraform CLI
+      shell: |
+        curl -LO https://releases.hashicorp.com/terraform/0.15.4/terraform_0.15.4_linux_amd64.zip
+        unzip terraform_0.15.4_linux_amd64.zip
+        sudo mv terraform /usr/local/bin/
+      args:
+        chdir: /tmp
