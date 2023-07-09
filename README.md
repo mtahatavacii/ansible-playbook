@@ -12,7 +12,7 @@ This repository contains an Ansible playbook to set up and configure a remote ma
    1. Install Ansible on the control machine:
    
       ```shell
-      sudo yum install ansible -y
+      yum install ansible -y
       ansible --version
    2. Create the inventory.ini file:
    3. Configure SSH access without a password:
