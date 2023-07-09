@@ -1,4 +1,4 @@
-# Ansible Setup
+# Ansible Playbook
 
 This repository contains an Ansible playbook to set up and configure a remote machine.
 
