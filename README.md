@@ -18,8 +18,8 @@ This repository contains an Ansible playbook to set up and configure a remote ma
        ```shell
       vi inventory.ini
 
-   Add the following contents to the inventory.ini file:
-       ```shell
+      Add the following contents to the inventory.ini file:
+          ```shell
          [your_remote_host]
          <Your_IP>
 
@@ -33,5 +33,3 @@ This repository contains an Ansible playbook to set up and configure a remote ma
 2. Run the Ansible playbook:
    ```shell
    ansible-playbook -i inventory.ini playbook.yml
-
-
